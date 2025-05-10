@@ -13,14 +13,13 @@ export interface Empreendedor {
   cnpj: string;
   cep: string;
   biografia: string;
-  fotoUrl: string;
   materiais: string[];
   horario: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class EmpreendedorService {
-  private base = 'http://localhost:3000/api/empreendedores';
+  private base = 'http://localhost:3000/empreendedores';
   constructor(private http: HttpClient) {}
 
   criar(data: Empreendedor): Observable<Empreendedor> {
