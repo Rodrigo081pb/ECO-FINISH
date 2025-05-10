@@ -1,12 +1,13 @@
 // src/app/home/home.component.ts
 import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
@@ -15,7 +16,15 @@ export class HomeComponent implements OnInit {
   darkMode = false;
   mobileMenu = false;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  // para o formulário do coletor
+  sexo = '';
+  estado = '';
+  idade!: number;
+
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const stored = localStorage.getItem('theme');
@@ -32,8 +41,18 @@ export class HomeComponent implements OnInit {
     this.showModal = false;
   }
   selecionar(op: string): void {
-    if (op === 'coletor') this.etapa = 1;
-    else if (op === 'empreendedor') this.etapa = 2;
+    if (op === 'visitante') {
+      this.closeModal();
+      this.router.navigate(['/pesquisa']);
+    } else if (op === 'coletor') {
+      this.etapa = 1;
+    } else if (op === 'empreendedor') {
+      this.etapa = 2;
+    }
+  }
+  goToPesquisa(): void {
+    this.closeModal();
+    this.router.navigate(['/pesquisa']);
   }
   toggleMenu(): void {
     this.mobileMenu = !this.mobileMenu;

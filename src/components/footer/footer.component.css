@@ -1,0 +1,30 @@
+/* src/app/footer/footer.component.css */
+
+/* animação da onda: desloca o SVG horizontalmente */
+@keyframes waveShift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+.wave {
+  animation: waveShift 10s linear infinite;
+}
+
+/* animação de sway nas folhas */
+@keyframes sway {
+  from { transform: rotate(-5deg); }
+  to   { transform: rotate(5deg); }
+}
+.leaf-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  animation: sway 3s ease-in-out infinite alternate;
+}
+
+/* pulso suave no separador */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+.animate-pulse-slow {
+  animation: pulseSlow 4s ease-in-out infinite;
+}
