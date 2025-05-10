@@ -1,7 +1,6 @@
 <!-- src/app/home/home.component.html -->
 <div class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
 
-
   <!-- HERO / NOSSO PROPÓSITO -->
   <section
     class="relative flex items-center justify-center h-screen bg-cover bg-center"
@@ -56,7 +55,6 @@
         Ver Mapa de Coleta
       </a>
     </div>
-
     <div class="flex justify-center">
       <div>
         <svg
@@ -87,35 +85,21 @@
     </div>
   </section>
 
-  <div
-    *ngIf="showModal"
-    class="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center p-4"
-  >
-    <div
-      class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-2xl p-6 w-full max-w-md shadow-xl relative"
-    >
+  <!-- MODAL MULTI-ETAPA -->
+  <div *ngIf="showModal"
+       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 w-full max-w-md shadow-xl relative">
       <button (click)="closeModal()"
-              class="float-right text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-              aria-label="Fechar">✕</button>
-
+              class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">&times;</button>
       <ng-container [ngSwitch]="etapa">
 
         <!-- Etapa 0 -->
         <div *ngSwitchCase="0" class="text-center space-y-6">
           <h2 class="text-2xl font-bold">Como você se identifica?</h2>
           <div class="flex flex-col gap-3">
-            <button (click)="selecionar('visitante')"
-                    class="py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition">
-              Sou visitante
-            </button>
-            <button (click)="selecionar('coletor')"
-                    class="py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition">
-              Sou coletor
-            </button>
-            <button (click)="selecionar('empreendedor')"
-                    class="py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition">
-              Sou empreendedor
-            </button>
+            <button (click)="selecionar('visitante')" class="btn-modal">Sou visitante</button>
+            <button (click)="selecionar('coletor')"   class="btn-modal">Sou coletor</button>
+            <button (click)="selecionar('empreendedor')" class="btn-modal">Sou empreendedor</button>
           </div>
         </div>
 
@@ -134,49 +118,46 @@
               </select>
             </div>
             <div>
-            <label class="block mb-1 text-gray-700 dark:text-gray-300">Estado</label>
-            <select
-              [(ngModel)]="estado"
-              name="estado"
-              class="w-full p-2 border rounded bg-white dark:bg-gray-800"
-            >
-              <option value="" disabled selected>Selecione o estado</option>
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option>
-              <option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option>
-              <option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
-            </select>
-          </div>
-
+              <label class="block mb-1">Estado</label>
+              <select [(ngModel)]="estado" name="estado"
+                      class="w-full p-2 border rounded bg-white dark:bg-gray-800">
+                <option value="" disabled selected>Selecione o estado</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+              </select>
+            </div>
             <div>
               <label class="block mb-1">Idade</label>
               <input type="number" [(ngModel)]="idade" name="idade" placeholder="Idade"
-                    class="w-full p-2 border rounded bg-white dark:bg-gray-800"/>
+                     class="w-full p-2 border rounded bg-white dark:bg-gray-800"/>
             </div>
-            <button type="button" (click)="goToPesquisa()"
+            <button type="button"
+                    (click)="goToPesquisa()"
                     class="w-full py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition">
               Prosseguir
             </button>
@@ -187,23 +168,12 @@
         <div *ngSwitchCase="2" class="text-center space-y-4">
           <p>Deseja realizar o cadastro e transformar o mundo?</p>
           <div class="flex gap-4 justify-center">
-            <button routerLink="/cadastro" (click)="closeModal()"
-                    class="px-6 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition">
-              Sim
-            </button>
-            <button (click)="closeModal()"
-                    class="px-6 py-2 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg transition">
-              Não
-            </button>
+            <button routerLink="/cadastro" (click)="closeModal()" class="btn-modal">Sim</button>
+            <button (click)="closeModal()" class="btn-modal">Não</button>
           </div>
         </div>
 
       </ng-container>
     </div>
   </div>
-
-
 </div>
-
-
-
