@@ -1,3 +1,4 @@
+// src/app/services/empreendedor-service.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,7 +8,6 @@ export interface Empreendedor {
   empresa: string;
   email: string;
   telefone: string;
-  senha: string;
   municipio: string;
   estado: string;
   cnpj: string;
@@ -15,6 +15,8 @@ export interface Empreendedor {
   biografia: string;
   materiais: string[];
   horario: string;
+  precoKg?: number;
+  precoTonelada?: number;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -32,5 +34,13 @@ export class EmpreendedorService {
 
   listarTodos(): Observable<Empreendedor[]> {
     return this.http.get<Empreendedor[]>(this.base);
+  }
+
+  atualizar(id: number, data: Partial<Empreendedor>): Observable<Empreendedor> {
+    return this.http.patch<Empreendedor>(`${this.base}/${id}`, data);
+  }
+
+  excluir(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.base}/${id}`);
   }
 }

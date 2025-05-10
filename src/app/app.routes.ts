@@ -1,15 +1,17 @@
 import { provideRouter, Route } from '@angular/router';
 import { HomeComponent } from '../pages/home/home.component';
-// import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { PesquisaComponent } from '../pages/pesquisa/pesquisa.component';
 import { CadastroComponent } from '../pages/cadastro/cadastro.component';
-// import { HomeEmpreendedorComponent } from './home-empreendedor/home-empreendedor.component';
+import { HomeAdminComponent } from '../pages/home-admin/home-admin.component';
+import { LoginComponent } from '../pages/login/login.component';
 
 export const routes: Route[] = [
   { path: '', component: HomeComponent },
-  // { path: 'pesquisa', component: PesquisaComponent },
+  { path: 'pesquisa', component: PesquisaComponent },
   { path: 'cadastro', component: CadastroComponent },
-  // { path: 'home-empreendedor', component: HomeEmpreendedorComponent },
-  { path: '**', redirectTo: '' }
+  { path: 'super-admin-home', component: HomeAdminComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '**', redirectTo: '' },
 ];
 
 export const router = provideRouter(routes);

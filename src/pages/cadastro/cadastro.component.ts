@@ -108,7 +108,8 @@ export class CadastroComponent implements OnInit {
     this.empreService.criar(data).subscribe({
       next: (res) => {
         console.log('Conta criada com sucesso:', res);
-        this.router.navigate(['/']);
+        localStorage.setItem('empreendedor', JSON.stringify(res));
+        this.router.navigate(['/super-admin-home']);
       },
       error: (err) => {
         console.error('Erro ao criar conta:', err);

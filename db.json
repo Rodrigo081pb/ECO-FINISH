@@ -1,22 +1,28 @@
 {
   "empreendedores": [
     {
-      "id": "a678",
-      "empresa": "Ecotest",
-      "email": "ecoteste@gmail.com",
-      "telefone": "81984423591",
+      "id": "b67b",
+      "empresa": "kauarodrigo",
+      "email": "kauarodrigo1193@gmail.com",
+      "telefone": "984423591",
       "senha": "123efoda",
-      "municipio": "Camaragibe",
-      "cnpj": "95968559483859",
-      "cep": "96065-480",
-      "biografia": "",
+      "municipio": "tangamandapio",
+      "estado": "MS",
+      "cnpj": "94834843834",
+      "cep": "50030-150",
+      "biografia": "asa",
       "materiais": [
         "Papel",
         "Plástico",
-        "Eletrônicos",
-        "Vidro"
+        "Outros"
       ],
-      "horario": "10 da manhã as 20 da noite"
+      "horario": "sempre online",
+      "preco_Papel_kg": 0,
+      "preco_Papel_ton": 0,
+      "preco_Plástico_kg": 0,
+      "preco_Plástico_ton": 0,
+      "preco_Outros_kg": 0,
+      "preco_Outros_ton": 0
     }
   ]
 }
