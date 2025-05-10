@@ -40,6 +40,10 @@ export class EmpreendedorService {
     return this.http.patch<Empreendedor>(`${this.base}/${id}`, data);
   }
 
+  getById(id: string | number): Observable<Empreendedor> {
+    return this.http.get<Empreendedor>(`${this.base}/${id}`);
+  }
+
   excluir(id: number): Observable<void> {
     return this.http.delete<void>(`${this.base}/${id}`);
   }

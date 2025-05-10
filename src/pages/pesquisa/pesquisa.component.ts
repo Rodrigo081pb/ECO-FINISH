@@ -1,6 +1,7 @@
+// src/app/pesquisa/pesquisa.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule }  from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EmpreendedorService, Empreendedor } from '../../../services/EmpreendedorService.service';
 
@@ -12,7 +13,7 @@ import { EmpreendedorService, Empreendedor } from '../../../services/Empreendedo
 })
 export class PesquisaComponent implements OnInit {
   empreendedores: Empreendedor[] = [];
-  filtered: Empreendedor[] = [];
+  filtered:       Empreendedor[] = [];
 
   estados = [
     'AC','AL','AP','AM','BA','CE','DF','ES','GO','MA',
@@ -21,7 +22,7 @@ export class PesquisaComponent implements OnInit {
   ];
   materiaisList = ['Papel','Plástico','Vidro','Metal','Eletrônicos','Outros'];
 
-  filterEstado = '';
+  filterEstado   = '';
   filterMaterial = '';
 
   constructor(private service: EmpreendedorService) {}
@@ -29,7 +30,7 @@ export class PesquisaComponent implements OnInit {
   ngOnInit(): void {
     this.service.listarTodos().subscribe(list => {
       this.empreendedores = list;
-      this.filtered = [...list];
+      this.filtered       = [...list];
     });
   }
 
@@ -41,9 +42,11 @@ export class PesquisaComponent implements OnInit {
     });
   }
 
-  // Gera o link WhatsApp já sanitizado:
   whatsappLink(e: Empreendedor): string {
-    const phoneOnlyDigits = (e.telefone || '').replace(/\D/g, '');
-    return `https://wa.me/${phoneOnlyDigits}`;
+    const digits = (e.telefone || '').replace(/\D+/g, '');
+    return `https://wa.me/${digits}`;
   }
+
+
+
 }
