@@ -9,6 +9,7 @@ export interface Empreendedor {
   telefone: string;
   senha: string;
   municipio: string;
+  estado: string;
   cnpj: string;
   cep: string;
   biografia: string;

@@ -1,0 +1,107 @@
+<!-- src/app/cadastro/cadastro.component.html -->
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-700 to-emerald-600 p-3">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-xl overflow-hidden">
+    <div class="px-6 py-8 sm:px-10 sm:py-10">
+      <br>
+      <h2 class="text-center text-2xl sm:text-2xl font-extrabold text-emerald-700 dark:text-lime-300 mb-8">
+        Cadastro de Empreendedor
+      </h2>
+
+      <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <!-- Empresa + Email -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Empresa</label>
+            <input formControlName="empresa" placeholder="Nome da Empresa" class="input-field" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+            <input formControlName="email" type="email" placeholder="Email Corporativo" class="input-field" />
+          </div>
+        </div>
+
+        <!-- Telefone + CNPJ -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Telefone</label>
+            <input formControlName="telefone" placeholder="Telefone" class="input-field" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">CNPJ</label>
+            <input formControlName="cnpj" placeholder="CNPJ" class="input-field" />
+          </div>
+        </div>
+
+        <!-- Senha + Confirmar Senha -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Senha</label>
+            <input formControlName="senha" type="password" placeholder="Senha" class="input-field" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Confirmar Senha</label>
+            <input formControlName="confirmarSenha" type="password" placeholder="Confirmar Senha" class="input-field" />
+          </div>
+        </div>
+
+        <!-- Município + CEP + Horário -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Município</label>
+            <input formControlName="municipio" placeholder="Município" class="input-field" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">CEP</label>
+            <input formControlName="cep" placeholder="CEP" class="input-field" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Horário</label>
+            <input formControlName="horario" placeholder="Horário de Funcionamento" class="input-field" />
+          </div>
+        </div>
+
+        <!-- Biografia -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Biografia</label>
+          <textarea formControlName="biografia" rows="4" placeholder="Conte um pouco sobre seu negócio" class="input-field resize-none h-24"></textarea>
+        </div>
+
+        <!-- Foto URL -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Foto (URL)</label>
+          <input formControlName="fotoUrl" placeholder="URL da Foto da Empresa" class="input-field" />
+        </div>
+
+        <!-- Materiais Aceitos -->
+        <fieldset class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+          <legend class="px-2 font-semibold text-gray-700 dark:text-gray-300">Materiais Aceitos</legend>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-3">
+            <label *ngFor="let m of materiaisList" class="flex items-center space-x-2 cursor-pointer">
+              <input
+                #checkbox
+                type="checkbox"
+                (change)="toggleMaterial(m, checkbox.checked)"
+                class="h-4 w-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+              />
+              <span class="text-gray-700 dark:text-gray-300 text-sm">{{ m }}</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Botão de Submit -->
+        <button
+          type="submit"
+          [disabled]="loading"
+          class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg
+                 shadow focus:outline-none focus:ring-2 focus:ring-emerald-500 transition disabled:opacity-50"
+        >
+          {{ loading ? 'Cadastrando...' : 'Cadastrar' }}
+        </button>
+
+        <!-- Mensagens -->
+        <p *ngIf="errorMsg" class="text-center text-sm text-red-500">{{ errorMsg }}</p>
+        <p *ngIf="sucesso" class="text-center text-sm text-green-500">Obrigado por se cadastrar! Redirecionando…</p>
+      </form>
+    </div>
+  </div>
+</div>
