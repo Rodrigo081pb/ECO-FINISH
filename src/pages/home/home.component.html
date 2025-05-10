@@ -1,0 +1,151 @@
+<!-- src/app/home/home.component.html -->
+<div class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+
+
+  <!-- HERO / NOSSO PROPÓSITO -->
+  <section
+    class="relative flex items-center justify-center h-screen bg-cover bg-center"
+    style="background-image: url('/assets/hero-eco.jpg')">
+    <div class="absolute inset-0 bg-black/50 dark:bg-gray-900/70"></div>
+    <div class="relative z-10 text-center px-4 space-y-6 max-w-2xl">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-white">
+        Conectando o Futuro da Reciclagem
+      </h1>
+      <p class="text-lg md:text-xl text-gray-200">
+        Encontre coletores e compradores de materiais recicláveis em todo o Brasil.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a routerLink="/pesquisa"
+           class="px-8 py-3 bg-lime-400 hover:bg-lime-300 text-gray-900 font-semibold rounded-full transition transform hover:scale-105">
+          Começar Pesquisa
+        </a>
+        <button (click)="openModal()"
+                class="px-8 py-3 border-2 border-white text-white rounded-full hover:bg-white hover:text-emerald-600 transition">
+          Conhecer o Eco
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="py-16 px-6 grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+    <div>
+      <h2 class="text-3xl font-bold text-emerald-600 dark:text-lime-300 mb-4">
+        Econnect: Sustentabilidade em Ação
+      </h2>
+      <p class="mb-4">
+        O Econnect nasceu para unir quem coleta materiais recicláveis a quem precisa deles.
+        Com poucos cliques, você escolhe seu estado e encontra parceiros de coleta ou pontos de venda.
+      </p>
+      <ul class="space-y-2">
+        <li class="flex items-center">
+          <span class="inline-block w-2 h-2 bg-lime-400 rounded-full mr-2"></span>
+          Foco em comunidades locais
+        </li>
+        <li class="flex items-center">
+          <span class="inline-block w-2 h-2 bg-lime-400 rounded-full mr-2"></span>
+          Dados 100% abertos e colaborativos
+        </li>
+        <li class="flex items-center">
+          <span class="inline-block w-2 h-2 bg-lime-400 rounded-full mr-2"></span>
+          Impacto social mensurável
+        </li>
+      </ul>
+      <a routerLink="/pesquisa"
+         class="mt-6 inline-block px-6 py-2 bg-lime-400 hover:bg-lime-300 text-gray-900 rounded-full transition">
+        Ver Mapa de Coleta
+      </a>
+    </div>
+    <div class="flex justify-center">
+      <div class="w-80 h-80 bg-lime-200 dark:bg-lime-300 rounded-2xl animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- COMO PARTICIPAR -->
+  <section class="bg-gray-50 dark:bg-gray-800 py-16 px-6 text-center">
+    <h3 class="text-2xl font-bold text-emerald-600 dark:text-lime-300 mb-6">
+      Como você pode participar
+    </h3>
+    <div class="grid sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="p-6 bg-white dark:bg-gray-700 rounded-xl hover:shadow-lg transition">
+        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-200 rounded-full mx-auto mb-4 animate-bounce"></div>
+        <h4 class="font-semibold mb-2">Buscar Coletores</h4>
+        <p>Encontre perfis de coletores ativos em sua região em segundos.</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-gray-700 rounded-xl hover:shadow-lg transition">
+        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-200 rounded-full mx-auto mb-4 animate-ping"></div>
+        <h4 class="font-semibold mb-2">Anunciar Materiais</h4>
+        <p>Cadastre seus materiais recicláveis e receba propostas.</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-gray-700 rounded-xl hover:shadow-lg transition">
+        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-200 rounded-full mx-auto mb-4 animate-pulse"></div>
+        <h4 class="font-semibold mb-2">Acompanhar Estatísticas</h4>
+        <p>Veja o impacto ambiental gerado pela sua comunidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL MULTI-ETAPA -->
+  <div *ngIf="showModal"
+       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 w-full max-w-md">
+      <button (click)="closeModal()" class="float-right text-xl">✕</button>
+      <ng-container [ngSwitch]="etapa">
+
+        <!-- Etapa 0: escolha de perfil -->
+        <div *ngSwitchCase="0" class="space-y-4 text-center">
+          <h2 class="text-2xl font-bold">Como você se identifica?</h2>
+          <div class="space-y-3">
+            <button routerLink="/pesquisa"
+                    (click)="closeModal()"
+                    class="w-full py-2 bg-lime-400 text-gray-900 rounded-lg hover:bg-lime-300 transition animate-pulse">
+              Sou visitante
+            </button>
+            <button (click)="selecionar('coletor')"
+                    class="w-full py-2 bg-lime-400 text-gray-900 rounded-lg hover:bg-lime-300 transition animate-bounce">
+              Sou coletor
+            </button>
+            <button (click)="selecionar('empreendedor')"
+                    class="w-full py-2 bg-lime-400 text-gray-900 rounded-lg hover:bg-lime-300 transition animate-pulse">
+              Sou empreendedor
+            </button>
+          </div>
+        </div>
+
+        <!-- Etapa 1: coletor -->
+        <div *ngSwitchCase="1" class="space-y-4">
+          <h2 class="text-xl font-semibold">Conte mais sobre você</h2>
+          <form class="space-y-3">
+            <input type="text" placeholder="Sexo" class="w-full p-2 border rounded"/>
+            <input type="text" placeholder="Estado" class="w-full p-2 border rounded"/>
+            <input type="number" placeholder="Idade" class="w-full p-2 border rounded"/>
+            <button routerLink="/pesquisa"
+                    (click)="closeModal()"
+                    class="w-full py-2 bg-lime-400 text-gray-900 rounded-lg hover:bg-lime-300 transition">
+              Prosseguir
+            </button>
+          </form>
+        </div>
+
+        <!-- Etapa 2: empreendedor -->
+        <div *ngSwitchCase="2" class="space-y-4 text-center">
+          <p>Deseja realizar o cadastro e transformar o mundo?</p>
+          <div class="flex gap-4 justify-center">
+            <button routerLink="/cadastro"
+                    (click)="closeModal()"
+                    class="px-6 py-2 bg-lime-400 text-gray-900 rounded-lg hover:bg-lime-300 transition">
+              Sim
+            </button>
+            <button (click)="closeModal()"
+                    class="px-6 py-2 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-400 transition">
+              Não
+            </button>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+  </div>
+
+
+</div>
