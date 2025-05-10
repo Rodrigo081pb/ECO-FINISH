@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "angular.json",
+      "use": "@vercel/angular",
+      "config": {
+        "distDir": "dist/eco-web/browser",
+        "renderMode": "client"
+      }
+    }
+  ]
+}
