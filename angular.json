@@ -16,6 +16,7 @@
             "outputPath": "dist/eco-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/ECO-FINISH/",
             "polyfills": [
               "zone.js"
             ],
