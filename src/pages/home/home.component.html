@@ -86,16 +86,23 @@
   </section>
 
   <!-- MODAL MULTI-ETAPA -->
-  <div *ngIf="showModal"
-       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 w-full max-w-md shadow-xl relative">
-      <button (click)="closeModal()"
-              class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">&times;</button>
-      <ng-container [ngSwitch]="etapa">
+  <div
+    *ngIf="showModal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+  >
+    <div
+      class="bg-white dark:bg-gray-900 rounded-2xl p-6 w-full max-w-md shadow-xl relative z-60"
+    >
+      <button
+        (click)="closeModal()"
+        class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+        aria-label="Fechar"
+      >&times;</button>
 
+      <ng-container [ngSwitch]="etapa">
         <!-- Etapa 0 -->
         <div *ngSwitchCase="0" class="text-center space-y-6">
-          <h2 class="text-2xl font-bold">Como você se identifica?</h2>
+          <h2 class="text-2xl font-bold">Como você se identifica ?</h2>
           <div class="flex flex-col gap-3">
             <button (click)="selecionar('visitante')" class="btn-modal">Sou visitante</button>
             <button (click)="selecionar('coletor')"   class="btn-modal">Sou coletor</button>
@@ -153,12 +160,19 @@
             </div>
             <div>
               <label class="block mb-1">Idade</label>
-              <input type="number" [(ngModel)]="idade" name="idade" placeholder="Idade"
-                     class="w-full p-2 border rounded bg-white dark:bg-gray-800"/>
+              <input
+                type="number"
+                [(ngModel)]="idade"
+                name="idade"
+                placeholder="Idade"
+                class="w-full p-2 border rounded bg-white dark:bg-gray-800"
+              />
             </div>
-            <button type="button"
-                    (click)="goToPesquisa()"
-                    class="w-full py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition">
+            <button
+              type="button"
+              (click)="goToPesquisa()"
+              class="w-full py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition"
+            >
               Prosseguir
             </button>
           </form>
@@ -172,8 +186,9 @@
             <button (click)="closeModal()" class="btn-modal">Não</button>
           </div>
         </div>
-
       </ng-container>
     </div>
   </div>
+
+
 </div>
