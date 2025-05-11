@@ -1,30 +1,75 @@
 <!-- src/app/home/home.component.html -->
 <div class="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
-
+<br>
   <!-- HERO / NOSSO PROPÓSITO -->
   <section
-    class="relative flex items-center justify-center h-screen bg-cover bg-center"
-    style="background-image: url('/assets/hero-eco.jpg')">
-    <div class="absolute inset-0 bg-black/50 dark:bg-gray-900/70"></div>
-    <div class="relative z-10 text-center px-4 space-y-6 max-w-2xl">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-white">
-        Conectando o Futuro da Reciclagem
-      </h1>
-      <p class="text-lg md:text-xl text-gray-200">
-        Encontre coletores e compradores de materiais recicláveis em todo o Brasil.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a routerLink="/pesquisa"
-           class="px-8 py-3 bg-lime-400 hover:bg-lime-300 text-gray-900 font-semibold rounded-full transition transform hover:scale-105">
-          Começar Pesquisa
-        </a>
-        <button (click)="openModal()"
-                class="px-8 py-3 border-2 border-white text-white rounded-full hover:bg-white hover:text-emerald-600 transition">
-          Conhecer o Econnect
-        </button>
+    class="relative min-h-screen bg-cover bg-center bg-fixed"
+    style="background-image: url('/amazon.jpeg')"
+  >
+    <!-- Overlay escuro + blur para destacar o texto -->
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+    <div
+      class="relative z-10 flex flex-col-reverse lg:flex-row items-center h-full container mx-auto px-6 lg:px-20 py-16"
+    >
+      <!-- TEXTO -->
+      <div class="w-full lg:w-1/2 text-center lg:text-left space-y-6">
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
+          data-aos="fade-right"
+        >
+          Conectando o Futuro da Reciclagem
+        </h1>
+        <p
+          class="text-sm sm:text-base md:text-lg text-gray-200 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          O <strong>Econect</strong> é uma plataforma que une quem coleta materiais
+          recicláveis a compradores de todo o Brasil. Ao estimular a economia circular,
+          geramos renda, reduzimos o impacto ambiental e colaboramos para um planeta
+          mais limpo e justo. Junte‑se a nós e transforme resíduos em oportunidades!
+        </p>
+        <div
+          class="flex flex-wrap justify-center lg:justify-start gap-4"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <a
+            routerLink="/pesquisa"
+            class="px-8 py-3 bg-gradient-to-r from-lime-400 to-emerald-400 hover:from-emerald-400 hover:to-lime-400
+                  text-gray-900 font-semibold rounded-full shadow-lg transition-transform transform
+                  hover:scale-105"
+          >
+            Começar Pesquisa
+          </a>
+          <button
+            (click)="openModal()"
+            class="px-8 py-3 border-2 border-white text-white rounded-full
+                  hover:bg-white hover:text-emerald-600 transition"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            Conhecer o Econect
+          </button>
+        </div>
+      </div>
+
+      <!-- ILUSTRAÇÃO (desktop only) -->
+      <div
+        class="w-full lg:w-1/2 mb-12 lg:mb-0 flex justify-center"
+        data-aos="zoom-in"
+        data-aos-delay="800"
+      >
+        <img
+          src="/brasil.png"
+          alt="Ilustração de reciclagem"
+          class="w-3/4 sm:w-2/3 lg:w-full transform hover:rotate-3 transition duration-700"
+        />
       </div>
     </div>
   </section>
+
 
   <!-- SOBRE -->
   <section class="py-16 px-6 grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
