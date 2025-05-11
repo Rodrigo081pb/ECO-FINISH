@@ -47,6 +47,4 @@ export class PesquisaComponent implements OnInit {
     return `https://wa.me/${digits}`;
   }
 
-
-
 }
