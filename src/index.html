@@ -15,10 +15,16 @@
   <app-root></app-root>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
+
     AOS.init({
-      once: true,       // anima só uma vez
-      duration: 800,    // duração padrão
+      once: true,
+      duration: 800,
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ once: true, duration: 800 });
+    });
+
   </script>
 </body>
 </html>
